@@ -12,7 +12,15 @@ export class ObjectModel
 
     handle(element) {
         let actions = new Actions();
-        _elementVisitors.get(this).visit(element, actions)
+        let elementVisitors = _elementVisitors.get(this);
+        
+        elementVisitors.visit(element, actions);
+
+        for( let elementIndex=0; elementIndex<element.children.length; elementIndex++ ) {
+            let child = element.children[elementIndex];
+            elementVisitors.visit(child, actions);
+            this.handle(child);
+        }
     }
 
     initialize() {

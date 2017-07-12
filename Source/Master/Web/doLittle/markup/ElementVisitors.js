@@ -13,7 +13,6 @@ export class ElementVisitors {
         _visitors.set(this, visitors);
     }
 
-
     visit(element, actions) {
         _visitors.get(this).forEach(visitor => {
             visitor.visit(element, actions);

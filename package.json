@@ -1,0 +1,33 @@
+{
+  "name": "ui",
+  "version": "1.0.0",
+  "dependencies": {
+    "babel-register": "^6.24.1",
+    "chai": "^4.1.0",
+    "sinon": "^2.3.7"
+  },
+  "scripts": {
+      "test": "jspmjasmine --jasmine-config ./jasmine.json",
+      "testwatch": "jspmjasmine --jasmine-config ./jasmine.json -w"
+  },
+  "devDependencies": {
+    "jasmine": "^2.6.0",
+    "jspm": "^0.17.0-beta.42",
+    "node-jspm-jasmine": "^3.0.0"
+  },
+  "jspm": {
+    "name": "app",
+    "main": "app.js",
+    "dependencies": {
+      "chai": "npm:chai@^4.1.0",
+      "sinon": "npm:sinon@^2.3.7"
+    },
+    "devDependencies": {
+      "plugin-babel": "npm:systemjs-plugin-babel@^0.0.25"
+    },
+    "peerDependencies": {
+      "path": "npm:jspm-nodelibs-path@^0.2.0",
+      "process": "npm:jspm-nodelibs-process@^0.2.0"
+    }
+  }
+}

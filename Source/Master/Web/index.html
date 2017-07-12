@@ -10,6 +10,8 @@
 
 <body class="fixed-left">
 
+    <view/>
+    
     <!-- Begin page -->
     <div id="wrapper">
 
@@ -941,7 +943,7 @@
         ]).then(function(imports) {
             System.import("doLittle/markup/ObjectModel").then(function (o) {
                 var document = new imports[0].Document();
-                var elementVisitors = new imports[2].ElementVisitors;
+                var elementVisitors = new imports[1].ElementVisitors;
                 var om = new o.ObjectModel(document, elementVisitors);
                 om.initialize();
             });

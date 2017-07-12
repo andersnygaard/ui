@@ -81,7 +81,7 @@ SystemJS.config({
         "oidc-client": "npm:oidc-client@1.3.0",
         "os": "npm:jspm-nodelibs-os@0.2.1",
         "path": "npm:jspm-nodelibs-path@0.2.0",
-        "process": "npm:jspm-nodelibs-process@0.2.0",
+        "process": "github:jspm/nodelibs-process@0.2.0-alpha",
         "jquery": "Scripts/jquery-2.2.4.min.js",
         "html": "github:Hypercubed/systemjs-plugin-html@0.0.8",
         "knockout": "github:knockout/knockout@3.4.0",
