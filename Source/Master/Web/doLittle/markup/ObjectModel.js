@@ -2,28 +2,26 @@
  *  Copyright (c) 2008-2017 doLittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-import {Actions} from "./Actions";
-
 const _document = new WeakMap();
 const _elementVisitors = new WeakMap();
+const _actionFactory = new WeakMap();
 
 export class ObjectModel
 {
-    constructor(document, elementVisitors) {
+    constructor(document, elementVisitors, actionFactory) {
         _document.set(this, document);
         _elementVisitors.set(this, elementVisitors);
+        _actionFactory.set(this, actionFactory);
     }
 
-    handle(element) {
-        let actions = new Actions();
-        let elementVisitors = _elementVisitors.get(this);
+    handle(element, actions) {
+        if( !actions ) actions = _actionFactory.get(this).create();
         
-        elementVisitors.visit(element, actions);
+        _elementVisitors.get(this).visit(element, actions);
 
         for( let elementIndex=0; elementIndex<element.children.length; elementIndex++ ) {
             let child = element.children[elementIndex];
-            elementVisitors.visit(child, actions);
-            this.handle(child);
+            this.handle(child, actions);
         }
     }
 
