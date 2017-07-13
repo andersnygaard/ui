@@ -2,8 +2,7 @@
   "spec_dir": "Specifications",
   "spec_files": [
     "**/*.js"
-  ],
-  
+  ],  
   "helpers": [
     "prefiles.js"
   ],

@@ -1,10 +1,12 @@
 let rootDir = process.cwd();
 let outputDir = `${rootDir}/wwwroot`;
 let sourceDir = `${rootDir}`;
+let specsDir = `${rootDir}/Specifications`;
 
 const _rootDir = new WeakMap();
 const _outputDir = new WeakMap();
 const _sourceDir = new WeakMap();
+const _specsDir = new WeakMap();
 const _dotnetProcessString = new WeakMap();
 
 class config {
@@ -53,6 +55,13 @@ class paths {
             `!${this.rootDir}/gulp/**/*`
         ]
     }
+
+    get javascriptSpecs() {
+        return [
+            `${this.specsDir}/**/*.js`
+        ];
+    }
+
 
     get less() {
         return [
@@ -107,6 +116,15 @@ class paths {
 
     set sourceDir(value) { _sourceDir.set(this, value); }
 
+    get specsDir() {
+        if (_specsDir.has(this)) {
+            return _specsDir.get(this);
+        }
+        return specsDir;
+    }
+
+    set specsDir(value) { _specsDir.set(this, value); }
+    
     get dotnetProcessString() {
         if( _dotnetProcessString.has(this) ) {
             return _dotnetProcessString.get(this);

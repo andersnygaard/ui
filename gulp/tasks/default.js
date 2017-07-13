@@ -7,6 +7,7 @@ import "./less";
 import "./staticContent";
 import "./dotnet";
 import "./watch";
+import "./javascriptSpecs";
 
 gulp.task("build", ["html", "javascript", "less", "staticContent", "dotnetbuild"]);
 

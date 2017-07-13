@@ -1,35 +1,13 @@
 ﻿import gulp from "gulp";
-import gulp_jspm from "gulp-jspm";
-import util from "gulp-util";
 import sourcemaps from "gulp-sourcemaps";
-import rename from "gulp-rename";
-import concat from "gulp-concat";
 import config from "../config";
-import path from "path";
-
-import rjs from "gulp-requirejs";
-
-import babel from "gulp-babel";
-
-import pkg from "../../package.json";
+import babel from "./babel";
 
 export function javaScriptPipeline(stream)
 {
-    let root = path.resolve("./");
-    
-
     stream
         .pipe(sourcemaps.init())
-        .pipe(babel({
-            presets: ["es2015"],
-            plugins: [
-                //"/Users/einari/Projects/dolittle/Samples/Basic/Source/Web/babel-plugin-dolittle-extend.js"
-                //"C:\\Projects\\dolittle\\Samples\\Basic\\Source\\Web\\babel-plugin-dolittle-extend.js"
-            ],
-            sourceMaps: true
-            //sourceRoot: "../"
-            //sourceMaps: "inline"
-        }))
+        .pipe(babel())
         .on("error", (error) => {
             console.error("**** Babel compile error ****");
             console.log(error.fileName);

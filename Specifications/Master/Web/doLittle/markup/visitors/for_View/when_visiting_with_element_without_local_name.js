@@ -3,7 +3,7 @@ import {View} from "doLittle/markup/visitors/View";
 
 describe("when visiting with non view element", () => {
     let view = null;
-    const element = { localName : "notView" };
+    const element = { };
     let actions = {
         append: sinon.stub()
     };
