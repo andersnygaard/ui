@@ -945,7 +945,7 @@
             System.import("doLittle/markup/ObjectModel").then(function (o) {
                 var document = new imports[0].Document();
                 var elementVisitors = new imports[1].ElementVisitors();
-                var actionsFactory = new imports[2].actionsFactory();
+                var actionsFactory = new imports[2].ActionsFactory();
                 var om = new o.ObjectModel(document, elementVisitors, actionsFactory);
                 om.initialize();
             });
