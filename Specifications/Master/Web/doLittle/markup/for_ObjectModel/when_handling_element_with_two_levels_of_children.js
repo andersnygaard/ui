@@ -23,7 +23,7 @@ describe("when handling element with two levels of children", () => {
 
     beforeEach(() => {
         context = new Context();
-        objectModel = new ObjectModel(context.document, context.elementVisitors, context.actionFactory);
+        objectModel = new ObjectModel(context.document, context.elementVisitors, context.actionsFactory);
 
         (becauseOf => objectModel.handle(element))();
     });
@@ -31,5 +31,5 @@ describe("when handling element with two levels of children", () => {
     it("should let element visitors visit top level element", () => context.elementVisitors.visit.calledWith(element, context.actions));
     it("should let element visitors visit first level element", () => context.elementVisitors.visit.calledWith(firstLevelChild, context.actions));
     it("should let element visitors visit second level element", () => context.elementVisitors.visit.calledWith(secondLevelChild, context.actions));
-    it("should create actions once", () => context.actionFactory.create.calledOnce.should.be.true);
+    it("should create actions once", () => context.actionsFactory.create.calledOnce.should.be.true);
 });

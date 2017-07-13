@@ -11,7 +11,7 @@ export default class
             visit: sinon.stub()
         };
         this.actions = new Actions();
-        this.actionFactory = {
+        this.actionsFactory = {
             create: sinon.stub().returns(this.actions)
         };
     }

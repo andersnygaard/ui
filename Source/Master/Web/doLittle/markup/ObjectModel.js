@@ -4,18 +4,32 @@
  *--------------------------------------------------------------------------------------------*/
 const _document = new WeakMap();
 const _elementVisitors = new WeakMap();
-const _actionFactory = new WeakMap();
+const _actionsFactory = new WeakMap();
 
+/**
+ * System that represents the object model found in an application
+ */
 export class ObjectModel
 {
-    constructor(document, elementVisitors, actionFactory) {
+    /**
+     * Initializes a new instance of {ObjectModel}
+     * @param {*} document Document to use
+     * @param {*} elementVisitors ElementVisitors to use for visiting
+     * @param {*} actionsFactory ActionsFactory to use for creating actions collections
+     */
+    constructor(document, elementVisitors, actionsFactory) {
         _document.set(this, document);
         _elementVisitors.set(this, elementVisitors);
-        _actionFactory.set(this, actionFactory);
+        _actionsFactory.set(this, actionsFactory);
     }
 
+    /**
+     * Handle object model for given element - recursively through children
+     * @param {HTMLElement} element Element to handle for
+     * @param {*} [actions] Actions that get aggregated 
+     */
     handle(element, actions) {
-        if( !actions ) actions = _actionFactory.get(this).create();
+        if( !actions ) actions = _actionsFactory.get(this).create();
         
         _elementVisitors.get(this).visit(element, actions);
 
@@ -25,6 +39,9 @@ export class ObjectModel
         }
     }
 
+    /**
+     * Initialize based on current document from the body
+     */
     initialize() {
         this.handle(_document.get(this).body);
     }

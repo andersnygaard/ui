@@ -7,8 +7,15 @@ import {Actions} from "./Actions";
 // TODO: Look into having a convention that understands <type>Factory and automatically
 // injects a factory that is capable of creating these.
 
-export class ActionFactory
+/**
+ * Represents a factory that is capable of creating {Actions}
+ */
+export class ActionsFactory
 {
+    /**
+     * Create an instance of {Actions}
+     * @return New instance of {Actions}
+     */
     create() {
         return new Actions();
     }
