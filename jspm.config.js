@@ -1,8 +1,8 @@
 SystemJS.config({
   paths: {
     "npm:": "jspm_packages/npm/",
-    "app/": "src/",
-    "doLittle": "Source/Master/Web/doLittle/"
+    "doLittle": "Source/Master/Web/doLittle/",
+    "app/": "src/"
   },
   browserConfig: {
     "baseURL": "/"
