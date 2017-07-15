@@ -2,10 +2,12 @@
  *  Copyright (c) 2008-2017 doLittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-import {ElementVisitor} from "../markup/ElementVisitor";
-import {ActionFactory} from "../markup/ActionFactory";
+import {ElementVisitor} from "doLittle/markup/ElementVisitor";
+import {BindingContextManager} from "doLittle/values/BindingContextManager";
+import {RegionManager} from "./RegionManager";
 
-const _actionFactory = new WeakMap();
+const _bindingContextManager = new WeakMap();
+const _regionManager = new WeakMap();
 
 /**
  * Represents a {ElementVisitor} for dealing with views
@@ -13,23 +15,36 @@ const _actionFactory = new WeakMap();
 export class ViewVisitor extends ElementVisitor
 {
     /**
-     * Initializes a new instance of {View}
-     * @param {ActionFactory} actionFactory The action factory
+     * Initializes a new instance of {ViewVisitor}
      */
-    constructor(actionFactory) {
+    constructor(bindingContextManager, regionManager) {
         super();
-        _actionFactory.set(this, actionFactory);
+        _bindingContextManager.set(this, bindingContextManager);
+        _regionManager.set(this, regionManager);
     }
 
     /** @inheritdoc */
-    visit(element, actions) {
-        if( !element.localName || element.localName !== "view") return;
+    visit(element, actions, results) {
+        if( element.localName !== "view") return;
 
-        let actionFactory = _actionFactory.get(this);
-        let addBindingContext = actionFactory.addBindingContext(element);
-        let addRegion = actionFactory.addRegion(element);
+        let pathAttribute = element.attributes.getNamedItem("path");
+        if( !pathAttribute || pathAttribute.value == "" ) {
+            results.error("Missing path attribute");
+            return;
+        }
         
-        actions.append(addBindingContext);
-        actions.append(addRegion);
+        // Get attribute - validate if it is there - if it is not, we need to report an error
+
+        let bindingContextManager = _bindingContextManager.get(this);
+        let parent = null;
+        if( bindingContextManager.hasParent(element) ) parent = bindingContextManager.getParent(element);
+        let bindingContext = _bindingContextManager.createFor(element);
+
+        let region = _regionManager.createFor(element);
+
+        // Create a bindingContext
+        // Create an implicit region
+        // If view exists in viewDefinitionManager -> Render
+        // If not - load it and then add a render action
     }
 }
