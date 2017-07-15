@@ -15,13 +15,16 @@ describe("when running an async task", () => {
     let taskRunner = null;
     let done = false;
 
-    beforeEach(() => {
+    beforeEach((resolve) => {
         task = new MyTask;
         taskRunner = new TaskRunner();
 
         done = false;
-        (becauseOf => taskRunner.run(task).then(() => done = true))();
+        (becauseOf => taskRunner.run(task).then(() => {
+            done = true;
+            resolve();
+        }))();
     });
 
-    //it("should resolve", () => done.should.be.true);
+    it("should resolve", () => done.should.be.true);
 });
