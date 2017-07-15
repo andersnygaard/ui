@@ -1,15 +1,19 @@
+import sinon from "sinon";
+
 export default class {
     constructor() {
-        this.bindingContextAction = {action:"bindingContext"};
-        this.regionAction = {action:"region"};
-
         this.actions = {
             append: sinon.stub()
         };
 
-        this.actionFactory = {
-            addBindingContext: sinon.stub().returns(this.bindingContextAction),
-            addRegion: sinon.stub().returns(this.regionAction)
-        }
+        this.regionManager = {
+
+        };
+
+        this.bindingContextManager = {
+            hasParent: sinon.stub(),
+            getParent: sinon.stub(),
+            createFor: sinon.stub()
+        };
     }
 }
