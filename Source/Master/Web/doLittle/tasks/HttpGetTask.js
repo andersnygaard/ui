@@ -21,6 +21,7 @@ export class HttpGetTask extends Task {
      * @param {Http} http The {Http} helper for performing the operation
      */
     constructor(url, mimeType, http) {
+        super();
         _url.set(this, url);
         _mimeType.set(this, mimeType);
         _http.set(this, http);
