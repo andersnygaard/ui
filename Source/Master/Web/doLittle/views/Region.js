@@ -41,6 +41,7 @@ export class Region {
      * @param {Task} task Task to queue
      */
     removeTask(task) {
-        this.tasks.remove(task);
+        let index = this.tasks.indexOf(task);
+        this.tasks.splice(index,1);
     }
 }
