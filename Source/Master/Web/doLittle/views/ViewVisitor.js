@@ -2,15 +2,15 @@
  *  Copyright (c) 2008-2017 doLittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-import {ElementVisitor} from "../ElementVisitor";
-import {ActionFactory} from "../ActionFactory";
+import {ElementVisitor} from "../markup/ElementVisitor";
+import {ActionFactory} from "../markup/ActionFactory";
 
 const _actionFactory = new WeakMap();
 
 /**
  * Represents a {ElementVisitor} for dealing with views
  */
-export class View extends ElementVisitor
+export class ViewVisitor extends ElementVisitor
 {
     /**
      * Initializes a new instance of {View}
