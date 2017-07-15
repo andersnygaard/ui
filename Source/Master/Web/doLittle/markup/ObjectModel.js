@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { Actions } from "./Actions";
 import { ActionsFactory } from "./ActionsFactory";
+import { ActionsPerformer } from "./ActionsPerformer";
 import { Document } from "./Document";
 import { ElementVisitors } from "./ElementVisitors";
 import { ElementVisitorResults } from "./ElementVisitorResults";
@@ -12,6 +13,7 @@ import { ElementVisitorResultsFactory } from "./ElementVisitorResultsFactory";
 const _document = new WeakMap();
 const _elementVisitors = new WeakMap();
 const _actionsFactory = new WeakMap();
+const _actionsPerformer = new WeakMap();
 const _elementVisitorResultsFactory = new WeakMap();
 
 let _handle = (elementVisitors, element, actions, results) => {
@@ -33,12 +35,18 @@ export class ObjectModel {
      * @param {Document} document Document to use
      * @param {ElementVisitors} elementVisitors ElementVisitors to use for visiting
      * @param {ActionsFactory} actionsFactory ActionsFactory to use for creating actions collections
+     * @param {ActionsPerformer} actionsPerformer ActionsPerformer to use for performing actions
      * @param {ElementVisitorResultsFactory} elementVisitorResultsFactory ElementVisitorResultsFactory to use for creating {ElementVisitorResults}
      */
-    constructor(document, elementVisitors, actionsFactory, elementVisitorResultsFactory) {
+    constructor(document, 
+                elementVisitors, 
+                actionsFactory,
+                actionsPerformer,
+                elementVisitorResultsFactory) {
         _document.set(this, document);
         _elementVisitors.set(this, elementVisitors);
         _actionsFactory.set(this, actionsFactory);
+        _actionsPerformer.set(this, actionsPerformer);
         _elementVisitorResultsFactory.set(this, elementVisitorResultsFactory);
     }
 
@@ -51,6 +59,8 @@ export class ObjectModel {
         let results = _elementVisitorResultsFactory.get(this).create();
         let elementVisitors = _elementVisitors.get(this)
         _handle(elementVisitors, element, actions, results);
+        _actionsPerformer.get(this).perform(actions);
+        return results;
     }
 
     /**
