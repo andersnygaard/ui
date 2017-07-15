@@ -4,18 +4,18 @@
  *--------------------------------------------------------------------------------------------*/
 import {View} from "./View";
 
-const _views = new WeakMap();
+const _definitions = new WeakMap();
 
 /**
  * Represents a manager for dealing with {View}s
  */
-export class ViewManager
+export class ViewDefinitionManager
 {
     /**
      * Initializes a new instance of {ViewManager}
      */
     constructor() {
-        _views.set(this, {});
+        _definitions.set(this, {});
     }
 
     /**
