@@ -5,6 +5,7 @@
 import {ElementVisitor} from "doLittle/markup/ElementVisitor";
 import {BindingContextManager} from "doLittle/values/BindingContextManager";
 import {RegionManager} from "./RegionManager";
+import {CreateRegionAction} from "./CreateRegionAction";
 
 const _bindingContextManager = new WeakMap();
 const _regionManager = new WeakMap();
@@ -33,14 +34,15 @@ export class ViewVisitor extends ElementVisitor
             return;
         }
         
-        // Get attribute - validate if it is there - if it is not, we need to report an error
-
+        actions.append(new CreateRegionAction(element, _regionManager.get(this)));
+        /*
         let bindingContextManager = _bindingContextManager.get(this);
         let parent = null;
         if( bindingContextManager.hasParent(element) ) parent = bindingContextManager.getParent(element);
         let bindingContext = _bindingContextManager.createFor(element);
 
         let region = _regionManager.createFor(element);
+        */
 
         // Create a bindingContext
         // Create an implicit region

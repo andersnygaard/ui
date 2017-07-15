@@ -1,11 +1,13 @@
 import Context from "./given/a_view_visitor";
 import sinon from "sinon";
 
-describe("when visiting with non view element", () => {
+describe("when visiting without local name", () => {
     let context = null;
-    const element = { };
+    const element = { 
+        
+    };
     let actions = {
-        append: sinon.stub()
+        append: sinon.stub(),
     };
 
     beforeEach(() => {
