@@ -14,6 +14,6 @@ export class ElementVisitor
      * @param {HTMLElement} element The element to visit
      * @param {Actions} actions The actions to append to
      */
-    visit(element, actions) {
+    visit(element, actions, results) {
     }
 }
