@@ -6,9 +6,11 @@
 // IMPORTANT: This should be discovered by being able to take dependency to "instancesOfElementVisitor"
 // the IOC will resolve it by convention and find implementations of it
 // It will be a combination of a Babel plugin and IOC magic
-import { View } from "./visitors/View"
+import { ViewVisitor } from "doLittle/views/ViewVisitor"
+import { ActionFactory } from "./ActionFactory";
 
 let elementVisitors = [];
-elementVisitors.push(new View());
+let actionFactory = new ActionFactory();
+elementVisitors.push(new ViewVisitor(actionFactory));
 
 export default elementVisitors;
