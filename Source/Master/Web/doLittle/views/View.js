@@ -2,41 +2,51 @@
  *  Copyright (c) 2008-2017 doLittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-import {ViewModel} from "./ViewModel";
-import {ViewPath} from "./ViewPath";
-import {NullViewModel} from "./NullViewModel";
+import { ViewDefinition } from "./ViewDefinition";
+import { ViewModel } from "./ViewModel";
 
-const _path = new WeakMap();
-const _viewModelType = new WeakMap();
+const _definition = new WeakMap();
+const _elements = new WeakMap();
+const _viewModel = new WeakMap();
 
 /**
- * Represents a view
+ * Represents an instance of a {View} associated with its document elements and its {ViewModel}
  */
-export class View
-{
+export class View {
+
     /**
-     * Initializes a new instance of {View}
-     * @param {ViewPath} path The path to the view
-     * @param {Type} [viewModel] The viewModel associated with the view - optional.
+     * Initializes a new instance of {ViewInstance}
+     * @param {ViewDefinition} definition 
+     * @param {HTMLElement[]} elements 
+     * @param {ViewModel} viewModel 
      */
-    constructor(path, viewModelType) {
-        _path.set(this, path);
-        _viewModelType.set(this, viewModelType || NullViewModel());
+    constructor(definition, elements, viewModel) {
+        _definition.set(this, view);
+        _elements.set(this, elements);
+        _viewModel.set(this, viewModel);
     }
 
     /**
-     * Gets the {ViewPath} for the {View}
-     * @returns {ViewPath}
+     * Gets the {View} definition
+     * @returns {ViewDefinition}
      */
-    get path() {
-        return _path.get(this);
+    get definiton() {
+        return _definition.get(this);
     }
-    
+
     /**
-     * Gets the type of {ViewModel} associated with the view
-     * @returns {function} 
+     * Gets the elements for the view
+     * @returns {HTMLElement[]}
      */
-    get viewModelType() {
-        return _viewModelType.get(this);
+    get elements() {
+        return _elements.get(this);
+    }
+
+    /**
+     * Gets the {ViewModel} instance for the {View}
+     * @returns {ViewModel}
+     */
+    get viewModel() {
+        return _viewModel.get(this);
     }
 }
