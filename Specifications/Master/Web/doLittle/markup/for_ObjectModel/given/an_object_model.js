@@ -8,8 +8,7 @@ export default class extends all_dependenices
         this.objectModel = new ObjectModel(
             this.document, 
             this.elementVisitors, 
-            this.actionsFactory, 
-            this.actionsPerformer,
-            this.elementVisitorResultsFactory);
+            this.actionContextFactory, 
+            this.actionsPerformer);
     }
 }

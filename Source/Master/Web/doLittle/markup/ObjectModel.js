@@ -2,26 +2,23 @@
  *  Copyright (c) 2008-2017 doLittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-import { Actions } from "./Actions";
-import { ActionsFactory } from "./ActionsFactory";
-import { ActionsPerformer } from "./ActionsPerformer";
+import { ActionContext } from "doLittle/actions/ActionContext";
+import { ActionContextFactory } from "doLittle/actions/ActionContextFactory";
+import { ActionsPerformer } from "doLittle/actions/ActionsPerformer";
 import { Document } from "./Document";
 import { ElementVisitors } from "./ElementVisitors";
-import { ElementVisitorResults } from "./ElementVisitorResults";
-import { ElementVisitorResultsFactory } from "./ElementVisitorResultsFactory";
 
 const _document = new WeakMap();
 const _elementVisitors = new WeakMap();
-const _actionsFactory = new WeakMap();
+const _actionContextFactory = new WeakMap();
 const _actionsPerformer = new WeakMap();
-const _elementVisitorResultsFactory = new WeakMap();
 
-let _handle = (elementVisitors, element, actions, results) => {
-    elementVisitors.visit(element, actions, results);
+let _handle = (elementVisitors, element, actionContext) => {
+    elementVisitors.visit(element, actionContext);
 
     for (let elementIndex = 0; elementIndex < element.children.length; elementIndex++) {
         let child = element.children[elementIndex];
-        _handle(elementVisitors, child, actions, results);
+        _handle(elementVisitors, child, actionContext);
     }
 };
 
@@ -34,20 +31,17 @@ export class ObjectModel {
      * Initializes a new instance of {ObjectModel}
      * @param {Document} document Document to use
      * @param {ElementVisitors} elementVisitors ElementVisitors to use for visiting
-     * @param {ActionsFactory} actionsFactory ActionsFactory to use for creating actions collections
+     * @param {ActionContextFactory} actionContextFactory Factory for creating {ActionContext}
      * @param {ActionsPerformer} actionsPerformer ActionsPerformer to use for performing actions
-     * @param {ElementVisitorResultsFactory} elementVisitorResultsFactory ElementVisitorResultsFactory to use for creating {ElementVisitorResults}
      */
     constructor(document, 
                 elementVisitors, 
-                actionsFactory,
-                actionsPerformer,
-                elementVisitorResultsFactory) {
+                actionContextFactory,
+                actionsPerformer) {
         _document.set(this, document);
         _elementVisitors.set(this, elementVisitors);
-        _actionsFactory.set(this, actionsFactory);
+        _actionContextFactory.set(this, actionContextFactory);
         _actionsPerformer.set(this, actionsPerformer);
-        _elementVisitorResultsFactory.set(this, elementVisitorResultsFactory);
     }
 
     /**
@@ -55,12 +49,10 @@ export class ObjectModel {
      * @param {HTMLElement} element Element to handle for
      */
     handle(element) {
-        let actions = _actionsFactory.get(this).create();
-        let results = _elementVisitorResultsFactory.get(this).create();
+        let actionContext = _actionContextFactory.get(this).create();
         let elementVisitors = _elementVisitors.get(this)
-        _handle(elementVisitors, element, actions, results);
-        _actionsPerformer.get(this).perform(actions);
-        return results;
+        _handle(elementVisitors, element, actionContext);
+        _actionsPerformer.get(this).perform(actionContext);
     }
 
     /**

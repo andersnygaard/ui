@@ -5,6 +5,6 @@ export default class extends Context
 {
     constructor() {
         super();
-        this.visitor = new ViewVisitor(this.bindingContextManager, this.regionManager);
+        this.visitor = new ViewVisitor(this.bindingContextManager, this.regionManager, this.viewDefinitionManager);
     }
 }

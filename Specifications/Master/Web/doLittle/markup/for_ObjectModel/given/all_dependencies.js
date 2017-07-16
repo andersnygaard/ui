@@ -6,16 +6,13 @@ export default class
         this.elementVisitors = {
             visit: sinon.stub()
         };
-        this.actions = {my:"actions"};
+        this.actionContext = {my:"actionContext"};
         this.results = {my:"results"};
-        this.actionsFactory = {
-            create: sinon.stub().returns(this.actions)
+        this.actionContextFactory = {
+            create: sinon.stub().returns(this.actionContext)
         };
         this.actionsPerformer = {
             perform: sinon.stub()
-        }
-        this.elementVisitorResultsFactory = {
-            create: sinon.stub().returns(this.results)
         }
     }
 }

@@ -2,18 +2,18 @@
  *  Copyright (c) 2008-2017 doLittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-import {ElementVisitorResult} from "./ElementVisitorResult";
-import {elementVisitorResultSeverity} from "./elementVisitorResultSeverity";
+import {ActionResult} from "./ActionResult";
+import {actionResultSeverity} from "./actionResultSeverity";
 
 const _results = new WeakMap();
 
  /**
-  * Represents a set of {ElementVisitorResult}s
+  * Represents a set of {ActionResult}s
   */
-export class ElementVisitorResults
+export class ActionResults
 {
     /**
-     * Initializes a new instance of {ElementVisitorResults}
+     * Initializes a new instance of {ActionResults}
      */
     constructor() {
         _results.set(this, []);
@@ -28,34 +28,38 @@ export class ElementVisitorResults
     }
 
     /**
-     * Add a result with {elementVisitorResultSeverity.info}
+     * Add a result with {actionResultSeverity.info}
+     * @param {Action} action The action associated with the result
      * @param {String} message Message related to the result
      */
-    info(message) {
-        _results.get(this).push(new ElementVisitorResult(message, elementVisitorResultSeverity.info));
+    info(action, message) {
+        _results.get(this).push(new ActionResult(action, message, actionResultSeverity.info));
     }
 
     /**
      * Add a result with {elementVisitorResultSeverity.warning}
+     * @param {Action} action The action associated with the result
      * @param {String} message Message related to the result
      */
-    warning(message) {
-        _results.get(this).push(new ElementVisitorResult(message, elementVisitorResultSeverity.warning));
+    warning(action, message) {
+        _results.get(this).push(new ActionResult(action, message, actionResultSeverity.warning));
     }
 
     /**
      * Add a result with {elementVisitorResultSeverity.error}
+     * @param {Action} action The action associated with the result
      * @param {String} message Message related to the result
      */
-    error(message) {
-        _results.get(this).push(new ElementVisitorResult(message, elementVisitorResultSeverity.error));
+    error(action, message) {
+        _results.get(this).push(new ActionResult(action, message, actionResultSeverity.error));
     }
 
     /**
      * Add a result with {elementVisitorResultSeverity.fatal}
+     * @param {Action} action The action associated with the result
      * @param {String} message Message related to the result
      */
-    fatal(message) {
-        _results.get(this).push(new ElementVisitorResult(message, elementVisitorResultSeverity.fatal));
+    fatal(action, message) {
+        _results.get(this).push(new ActionResult(action, message, actionResultSeverity.fatal));
     }
 }

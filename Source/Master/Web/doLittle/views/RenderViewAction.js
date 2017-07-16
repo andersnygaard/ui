@@ -2,16 +2,13 @@
  *  Copyright (c) 2008-2017 doLittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
+import {Action} from "doLittle/markup/Action";
 
 /**
- * Defines the base of an action that can be performed
+ * Represents an action that is capable of rendering a view
  */
- export class Action
-{
-    /**
-     * Perform the action
-     */
-    perform() {
+export class RenderViewAction extends Action {
+    constructor() {
 
     }
 }

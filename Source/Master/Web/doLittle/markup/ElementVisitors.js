@@ -3,8 +3,7 @@
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import {ElementVisitor} from "./ElementVisitor";
-import {Actions} from "./Actions";
-import {ELementVisitorResults} from "./ElementVisitorResults";
+import {ActionContext} from "doLittle/actions/ActionContext";
 
 const _visitors = new WeakMap();
 
@@ -24,12 +23,11 @@ export class ElementVisitors {
     /**
      * Visit an element and append any actions related to the element
      * @param {HTMLElement} element The element to visit
-     * @param {Actions} actions The actions to append to
-     * @param {ElementVisitorResults} results The results from the visit
+     * @param {ActionContext} actions The actions to append to
      */
-    visit(element, actions, results) {
+    visit(element, actionContext) {
         _visitors.get(this).forEach(visitor => {
-            visitor.visit(element, actions, results);
+            visitor.visit(element, actionContext);
         });
     }
 }

@@ -2,16 +2,18 @@
  *  Copyright (c) 2008-2017 doLittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-import {ElementVisitorResult} from "./ElementVisitorResult";
+import {ActionContext} from "./ActionContext";
 
- /**
-  * The valid values for severity related to {ElementVisitorResult}
-  */
-let elementVisitorResultSeverity = {
-    info: 1,
-    warning: 2,
-    error: 3,
-    fatal: 4
-};
+/**
+ * Defines the base of an action that can be performed
+ */
+ export class Action
+{
+    /**
+     * Perform the action
+     * @param {ActionContext} actionContext The context in which the {Action} is being performed
+     */
+    perform(actionContext) {
 
-export {elementVisitorResultSeverity};
+    }
+}

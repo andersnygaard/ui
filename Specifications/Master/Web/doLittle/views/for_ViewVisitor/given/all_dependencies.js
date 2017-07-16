@@ -20,5 +20,9 @@ export default class {
             getParent: sinon.stub(),
             createFor: sinon.stub()
         };
+
+        this.viewDefinitionManager = {
+            exists: sinon.stub()
+        }
     }
 }
