@@ -2,57 +2,45 @@
  *  Copyright (c) 2008-2017 doLittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
+import { Tasks } from "./Tasks";
+import { TaskResult } from "./TaskResult";
+import { TaskResults } from "./TaskResults";
+import { TaskContext } from "./TaskContext";
 
- const _children = new WeakMap();
- const _errors = new WeakMap();
+const _children = new WeakMap();
+const _results = new WeakMap();
 
 /**
  * Represents the base for a task
  */
-export class Task 
-{
+export class Task {
     /**
      * Initializes a new instance of a {Task}
      */
     constructor() {
-        _children.set(this, []);
-        _errors.set(this, []);
+        _children.set(this, new Tasks());
+        _results.set(this, new TaskResults());
     }
 
     /**
      * Get any child tasks
-     * @returns {Task[]} Tasks
+     * @returns {Tasks} Tasks
      */
     get children() {
         return _children.get(this);
     }
 
     /**
-     * Get any errors
-     * @returns {String[]} Array of errors in the form of strings
+     * Get the results 
+     * @returns {TaskResult[]} Array of errors in the form of strings
      */
-    get errors() {
-        return _errors.get(this);
+    get results() {
+        return _results.get(this);
     }
 
     /**
      * Execute the task
+     * @param {TaskContext} taskContext The context in which the task is running in
      */
-    execute() { }
-
-    /**
-     * Report error during execution
-     * @param {String} error 
-     */
-    reportError(error) {
-        _errors.get(this).push(error);
-    }
-
-    /**
-     * Add a child task to the task
-     * @param {Task} child 
-     */
-    addChild(child) {
-        _children.get(this).push(child);
-    }
+    execute(taskContext) { }
 }
