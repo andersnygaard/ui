@@ -10,16 +10,15 @@ describe("when visiting with non view element", () => {
             getNamedItem: sinon.stub().returns("something")
         }
     };
+    let tasks = null;
 
     beforeEach(() => {
         context = new Context();
-        (becauseOf => context.visitor.visit(element, context.tasks, context.results))();
+        (becauseOf => tasks = context.visitor.visit(element, context.tasks, context.results))();
     });
 
-    /*
-    it("should add a create region action", () => context.actionsArray.some(action => action instanceof CreateRegion).should.be.true);
-    it("should add a create binding context action", () => context.actionsArray.some(action => action instanceof CreateBindingContext).should.be.true);
-    */
+    it("should add a create region task", () => tasks.some(action => action instanceof CreateRegion).should.be.true);
+    it("should add a create binding context task", () => tasks.some(action => action instanceof CreateBindingContext).should.be.true);
 
     /*
     it("should create a new binding context for the element", () => context.actionFactory.addBindingContext.calledWith(element).should.be.true);

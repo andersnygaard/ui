@@ -36,18 +36,27 @@ export class ViewVisitor extends ElementVisitor {
     visit(element, taskContext) {
         if (element.localName !== "view") return;
 
-        // If path attribute is missing or empty -> Throw Exception - FATAL
 
-        /*
+        // If path attribute is missing or empty -> Throw Exception - FATAL
+        
         let pathAttribute = element.attributes.getNamedItem("path");
         if (!pathAttribute || pathAttribute.value == "") {
-            results.error("Missing path attribute");
+            // THROW exception
+            //results.error("Missing path attribute");
             return;
-        }*/
+        }
 
         // TODO: Deal with URI locations / mappers - UriLocationMapper thingy
 
-        //let viewPath = new ViewPath(pathAttribute.value);
+        let viewPath = new ViewPath(pathAttribute.value);
+
+        let tasks = [];
+
+        tasks.push(new CreateRegion(_regionManager.get(this), element))
+        tasks.push(new CreateBindingContext(_bindingContextManager.get(this), element))
+
+        return tasks;
+        
 
         // Action Context
         // - All Actions gets the context passed in on perform
@@ -56,6 +65,8 @@ export class ViewVisitor extends ElementVisitor {
 
         // Action context should contain results
         // Actions return the ActionContext rather than getting it passed in
+
+
 
 
         /*actions.append(new CreateRegionAction(_regionManager.get(this), element));

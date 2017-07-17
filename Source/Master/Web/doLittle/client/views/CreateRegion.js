@@ -11,7 +11,7 @@ const _regionManager = new WeakMap();
 /**
  * Represents a task that is capable of setting up a region for an {HTMLElement}
  */
-export class CreateRegionAction extends Task {
+export class CreateRegion extends Task {
 
     /**
      * Initializes a new instance of {CreateRegionAction}
@@ -25,7 +25,7 @@ export class CreateRegionAction extends Task {
     }
 
     /** @inheritdoc */
-    run() {
+    execute(taskContext) {
 
     }
 }
