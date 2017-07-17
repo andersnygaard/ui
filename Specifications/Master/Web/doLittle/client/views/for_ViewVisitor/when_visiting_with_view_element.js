@@ -1,5 +1,4 @@
 import Context from "./given/a_view_visitor";
-import sinon from "sinon";
 import {CreateRegion} from "doLittle/client/views/CreateRegion";
 import {CreateBindingContext} from "doLittle/client/values/CreateBindingContext";
 

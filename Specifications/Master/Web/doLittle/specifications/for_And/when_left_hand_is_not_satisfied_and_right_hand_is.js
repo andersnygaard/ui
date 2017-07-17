@@ -2,9 +2,10 @@
  *  Copyright (c) 2008-2017 Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
+
+
 import { Specification } from "doLittle/specifications/Specification";
 import { And } from "doLittle/specifications/And";
-import sinon from "sinon";
 
 describe("when left hand is not satisfied and right hand is", () => {
 

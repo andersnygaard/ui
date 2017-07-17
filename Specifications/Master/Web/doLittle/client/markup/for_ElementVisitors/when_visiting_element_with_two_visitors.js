@@ -1,4 +1,3 @@
-import sinon from "sinon";
 import {ElementVisitors} from "doLittle/client/markup/ElementVisitors";
 
 describe("when visiting element with two visitors", () => {

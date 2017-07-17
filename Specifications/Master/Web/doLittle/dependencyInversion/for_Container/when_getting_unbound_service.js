@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import Context from "./given/an_empty_container";
-import {MissingBindingForService} from "doLittle/dependencyInversion/MissingBindingForService";
+import {MissingBindingForService} from "doLittle/DependencyInversion/MissingBindingForService";
 
 describe("wen getting unbound service", () => {
     const service = "Some service";

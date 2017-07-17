@@ -1,5 +1,4 @@
 import Context from "./given/a_view_visitor";
-import sinon from "sinon";
 
 describe("when visiting with non view element", () => {
     let context = null;

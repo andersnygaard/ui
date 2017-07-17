@@ -1,8 +1,9 @@
 SystemJS.config({
   paths: {
     "npm:": "jspm_packages/npm/",
-    "doLittle": "Source/Master/Web/doLittle/",
-    "app/": "src/"
+    "doLittle": "Source/Master/Web/doLittle",
+    "app/": "src/",
+    "Specifications": "Specifications/Master/**/*.js"
   },
   browserConfig: {
     "baseURL": "/"
@@ -34,9 +35,12 @@ SystemJS.config({
     "npm:*.json"
   ],
   map: {
+    "assert": "npm:jspm-nodelibs-assert@0.2.1",
     "chai": "npm:chai@4.1.0",
+    "fs": "npm:jspm-nodelibs-fs@0.2.1",
     "path": "npm:jspm-nodelibs-path@0.2.3",
     "process": "npm:jspm-nodelibs-process@0.2.1",
+    "require-dir": "npm:require-dir@0.3.2",
     "sinon": "npm:sinon@2.3.7"
   },
   packages: {

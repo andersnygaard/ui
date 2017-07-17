@@ -4,7 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 import { Specification } from "doLittle/specifications/Specification";
 import { And } from "doLittle/specifications/And";
-import sinon from "sinon";
+
+console.log("SPEC");
 
 describe("when left hand is satisfied and right hand is also", () => {
 
@@ -15,8 +16,12 @@ describe("when left hand is satisfied and right hand is also", () => {
     let rightHandSide = new Specification(rightHandSideEvaluator);
 
     let instance = { something: 42 };
-    let rule = new And(leftHandSide, rightHandSide);
-    rule.evaluate(instance);
+    let rule = null;
+
+    beforeEach(() => {
+        rule = new And(leftHandSide, rightHandSide);
+        (becauseOf => rule.evaluate(instance))();
+    });
 
     it("should be considered satisfied", () => rule.isSatisfied.should.be.true);
 });

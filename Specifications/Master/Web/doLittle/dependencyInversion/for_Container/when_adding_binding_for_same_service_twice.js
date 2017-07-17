@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import Context from "./given/an_empty_container";
-import {BindingForServiceAlreadyExists} from "doLittle/dependencyInversion/BindingForServiceAlreadyExists";
+import {BindingForServiceAlreadyExists} from "doLittle/DependencyInversion/BindingForServiceAlreadyExists";
 
 describe("when adding binding for same service twice", () => {
     let binding = {
@@ -17,6 +17,7 @@ describe("when adding binding for same service twice", () => {
     context.container.add(binding);
 
     try {
+        console.log(JSON.stringify(context.container.bindings));
         context.container.add(binding);
     } catch(e) {
         exception = e;

@@ -31,6 +31,7 @@ export class Exception
      * Throw an instance of the exception
      */
     static throw() {
+        
         let bindArguments = [null];
         for( var argumentIndex=0; argumentIndex<arguments.length; argumentIndex++) bindArguments.push(arguments[argumentIndex]);
         var boundException = this.bind.apply(this, bindArguments);

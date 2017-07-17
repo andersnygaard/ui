@@ -4,7 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 import { Specification } from "doLittle/specifications/Specification";
 import { Or } from "doLittle/specifications/Or";
-import sinon from "sinon";
 
 describe("when left hand is satisfied and right hand is also", () => {
     

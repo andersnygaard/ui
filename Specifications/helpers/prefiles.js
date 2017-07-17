@@ -1,3 +1,6 @@
+console.log("Prefiles");
+
+
 sinon = require("sinon");
 var chai = require("chai");
 
@@ -15,3 +18,5 @@ exports.use = function (fn) {
 exports.use(chai.expect);
 exports.use(chai.should);
 exports.use(chai.assert);
+
+require("../../temp.js");

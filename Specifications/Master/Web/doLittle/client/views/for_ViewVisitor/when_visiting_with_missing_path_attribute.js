@@ -1,4 +1,3 @@
-import sinon from "sinon";
 import Context from "./given/a_view_visitor";
 
 describe("when visiting with missing path attribute", () => {

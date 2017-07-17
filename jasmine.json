@@ -1,11 +1,9 @@
 {
-  "spec_dir": "Specifications",
-  "spec_files": [
-    "**/*.js"
-  ],  
-  "helpers": [
-    "prefiles.js"
-  ],
-  "stopSpecOnExpectationFailure": false,
-  "random": false
+    "spec_dir": "Specifications",
+    "spec_files": [
+        "helpers/prefiles.js"
+    ],
+    "helpers": [
+        
+    ]
 }
