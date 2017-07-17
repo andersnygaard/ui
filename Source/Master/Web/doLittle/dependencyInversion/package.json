@@ -1,0 +1,41 @@
+{
+  "name": "@dolittle/dependencyinversion",
+  "description": "Dependency Inversion - IoC container for JavaScript",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/karma/bin/karma start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dolittle/javascript.core.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dolittle/javascript.core/issues"
+  },
+  "homepage": "http://www.dolittle.io",
+  "jspm": {
+    "dependencies": {
+      "dolittle-execution": "npm:dolittle-execution@^1.0.0"
+    },
+    "devDependencies": {
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.2.0",
+      "fs": "npm:jspm-nodelibs-fs@^0.2.0",
+      "path": "npm:jspm-nodelibs-path@^0.2.0",
+      "plugin-babel": "npm:systemjs-plugin-babel@^0.0.12",
+      "process": "npm:jspm-nodelibs-process@^0.2.0"
+    },
+    "overrides": {
+      "npm:babel-runtime@5.8.38": {
+        "main": false,
+        "dependencies": {},
+        "optionalDependencies": {
+          "core-js": "^1.2.0"
+        }
+      }
+    }
+  }
+}
