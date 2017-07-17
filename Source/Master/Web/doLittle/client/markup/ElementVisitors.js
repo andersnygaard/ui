@@ -28,7 +28,8 @@ export class ElementVisitors {
     visit(element) {
         let tasks = [];
         _visitors.get(this).forEach(visitor => {
-            tasks.concat(visitor.visit(element));
+            let tasksFromVisitor = visitor.visit(element);
+            tasks = tasks.concat(tasksFromVisitor);
         });
         return tasks;
     }
