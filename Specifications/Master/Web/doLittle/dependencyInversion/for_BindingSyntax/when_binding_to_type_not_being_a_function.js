@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import {BindingSyntax} from "doLittle/dependencyInversion/BindingSyntax";
 import {BindingTargetIsNotBasedOnFunction} from "doLittle/dependencyInversion/BindingTargetIsNotBasedOnFunction";
-import * as Context from "./given/a_bound_service";
+import Context from "./given/a_bound_service";
 
 describe("when binding to type not being a function", () => {
     const type = "Some Constant";

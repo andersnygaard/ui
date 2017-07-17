@@ -7,7 +7,7 @@ import {TypeActivationStrategy} from "doLittle/dependencyInversion/Strategies/Ty
 import {ScopeSyntax} from "doLittle/dependencyInversion/ScopeSyntax";
 import {TransientScope} from "doLittle/dependencyInversion/Scopes/TransientScope";
 import {Binding} from "doLittle/dependencyInversion/Binding";
-import * as Context from "./given/a_bound_service";
+import Context from "./given/a_bound_service";
 
 describe("when binding to type", () => {
     const type = function() {};

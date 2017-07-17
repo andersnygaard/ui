@@ -3,6 +3,7 @@
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import {Specification} from "doLittle/specifications/Specification";
+import sinon from "sinon";
 
 describe("when starting specification from when function", () => {
     let evaluator = sinon.stub();

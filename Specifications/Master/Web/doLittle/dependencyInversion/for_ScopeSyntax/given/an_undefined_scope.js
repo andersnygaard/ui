@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import {ScopeSyntax} from "doLittle/dependencyInversion/ScopeSyntax";
-import {Scope} from "doLittle/DependencyInversion/scopes/Scope";
+import {Scope} from "doLittle/dependencyInversion/scopes/Scope";
 
 export default class 
 {

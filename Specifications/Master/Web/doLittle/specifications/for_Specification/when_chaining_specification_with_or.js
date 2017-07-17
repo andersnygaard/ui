@@ -3,6 +3,7 @@
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import {Specification} from "doLittle/specifications/SpecificationComposition";
+import sinon from "sinon";
 
 describe("when chaining specification with or", () => {
     let first_evaluator = sinon.stub();
