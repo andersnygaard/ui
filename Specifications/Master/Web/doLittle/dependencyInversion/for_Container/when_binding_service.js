@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import {Container} from "doLittle/dependencyInversion/Container";
 import {Binding} from "doLittle/dependencyInversion/Binding";
-import {BindingSyntax} from "doLittle/dependencyInversion/BindingSyntax";
+import {BindingSyntax} from "doLittle/DependencyInversion/BindingSyntax";
 import Context from "./given/an_empty_container";
 
 describe("when binding service", () => {
