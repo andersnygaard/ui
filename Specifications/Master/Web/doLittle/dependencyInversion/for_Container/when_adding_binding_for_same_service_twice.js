@@ -17,7 +17,6 @@ describe("when adding binding for same service twice", () => {
     context.container.add(binding);
 
     try {
-        console.log(JSON.stringify(context.container.bindings));
         context.container.add(binding);
     } catch(e) {
         exception = e;
