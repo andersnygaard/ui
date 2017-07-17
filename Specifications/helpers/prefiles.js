@@ -1,6 +1,3 @@
-console.log("Prefiles");
-
-
 sinon = require("sinon");
 var chai = require("chai");
 
