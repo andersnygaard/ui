@@ -30,7 +30,10 @@ export function javaScriptSpecsPipeline(stream) {
 
     console.log("Done - run the specs");
 
-    start("jspmjasmine --jasmine-config jasmine.json", { setsid: true }, () => { });
+    start("jspmjasmine --jasmine-config jasmine.json", { setsid: true }, () => { 
+        fs.unlink(tempFile);
+    });
+    
     return stream;
 }
 

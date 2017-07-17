@@ -10,6 +10,7 @@ import { CreateBindingContext } from "doLittle/client/values/CreateBindingContex
 import { ViewDefinitionManager } from "./ViewDefinitionManager";
 import { ViewDefinition } from "./ViewDefinition";
 import { ViewPath } from "./ViewPath";
+import { MissingViewPath } from "./MissingViewPath";
 
 const _bindingContextManager = new WeakMap();
 const _regionManager = new WeakMap();
@@ -36,13 +37,9 @@ export class ViewVisitor extends ElementVisitor {
     visit(element, taskContext) {
         if (element.localName !== "view") return;
 
-
-        // If path attribute is missing or empty -> Throw Exception - FATAL
-        
         let pathAttribute = element.attributes.getNamedItem("path");
         if (!pathAttribute || pathAttribute.value == "") {
-            // THROW exception
-            //results.error("Missing path attribute");
+            MissingViewPath.throw(element);
             return;
         }
 
