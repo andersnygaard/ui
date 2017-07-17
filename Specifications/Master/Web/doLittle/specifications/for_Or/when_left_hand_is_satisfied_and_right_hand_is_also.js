@@ -6,7 +6,7 @@ import { Specification } from "doLittle/specifications/Specification";
 import { Or } from "doLittle/specifications/Or";
 
 describe("when left hand is satisfied and right hand is also", () => {
-    
+
     let leftHandSideEvaluator = sinon.stub().returns(true);
     let leftHandSide = new Specification(leftHandSideEvaluator);
 
@@ -14,8 +14,12 @@ describe("when left hand is satisfied and right hand is also", () => {
     let rightHandSide = new Specification(rightHandSideEvaluator);
 
     let instance = { something: 42 };
-    let rule = new Or(leftHandSide, rightHandSide);
-    rule.evaluate(instance);
+    let rule = null;
 
-    it("should be considered satisfied", rule.isSatisfied.should.be.true);
+    beforeEach(() => {
+        rule = new Or(leftHandSide, rightHandSide);
+        (becauseOf => rule.evaluate(instance))();
+    });
+
+    it("should be considered satisfied", () => rule.isSatisfied.should.be.true);
 });

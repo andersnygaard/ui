@@ -5,8 +5,6 @@
 import { Specification } from "doLittle/specifications/Specification";
 import { And } from "doLittle/specifications/And";
 
-console.log("SPEC");
-
 describe("when left hand is satisfied and right hand is also", () => {
 
     let leftHandSideEvaluator = sinon.stub().returns(true);
