@@ -65,22 +65,5 @@ export class ViewVisitor extends ElementVisitor {
         }
 
         return tasks;
-        
-
-        // Action Context
-        // - All Actions gets the context passed in on perform
-        // - All Actions can read and write to the context
-        // - Actions can have children - parent needs to be done before children can execute
-
-        // Action context should contain results
-        // Actions return the ActionContext rather than getting it passed in
-
-
-
-
-        /*actions.append(new CreateRegionAction(_regionManager.get(this), element));
-        actions.append(new CreateBindingContextAction(_bindingContextManager.get(this), element));
-        let viewDefinitionManager = _viewDefinitionManager.get(this);*/
-
     }
 }
