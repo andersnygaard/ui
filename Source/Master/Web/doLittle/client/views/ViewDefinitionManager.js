@@ -20,14 +20,21 @@ export class ViewDefinitionManager
 
     /**
      * Check if a view exists in the system or not
-     * @param {ViewPath} viewPath 
+     * @param {ViewPath} viewPath The path of the view to check for
      */
     exists(viewPath) {
     }
 
     /**
+     * Get a view based on the {ViewPath}
+     * @param {ViewPath} viewPath The path of the view to get
+     */
+    getFrom(viewPath) {
+    }
+
+    /**
      * Get a view instance
-     * @param {ViewPath} viewPath
+     * @param {ViewPath} viewPath The path of the view to create
      */
     createFrom(viewPath) {
     }

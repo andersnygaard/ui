@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { ViewDefinition } from "./ViewDefinition";
 import { ViewModel } from "./ViewModel";
+import { Region } from "./Region";
 
 const _definition = new WeakMap();
 const _elements = new WeakMap();
@@ -16,11 +17,12 @@ export class View {
 
     /**
      * Initializes a new instance of {ViewInstance}
+     * @param {Region} region
      * @param {ViewDefinition} definition 
      * @param {HTMLElement[]} elements 
      * @param {ViewModel} viewModel 
      */
-    constructor(definition, elements, viewModel) {
+    constructor(region, definition, elements, viewModel) {
         _definition.set(this, view);
         _elements.set(this, elements);
         _viewModel.set(this, viewModel);

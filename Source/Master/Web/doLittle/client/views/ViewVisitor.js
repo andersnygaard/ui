@@ -11,6 +11,8 @@ import { ViewDefinitionManager } from "./ViewDefinitionManager";
 import { ViewDefinition } from "./ViewDefinition";
 import { ViewPath } from "./ViewPath";
 import { MissingViewPath } from "./MissingViewPath";
+import { RenderView } from "./RenderView";
+import { LoadView } from "./LoadView";
 
 const _bindingContextManager = new WeakMap();
 const _regionManager = new WeakMap();
@@ -52,6 +54,16 @@ export class ViewVisitor extends ElementVisitor {
         tasks.push(new CreateRegion(_regionManager.get(this), element))
         tasks.push(new CreateBindingContext(_bindingContextManager.get(this), element))
 
+        let viewDefinitionManager = _viewDefinitionManager.get(this);
+        let renderView = new RenderView();
+        if (viewDefinitionManager.exists(viewPath)) {
+            tasks.push(renderView);
+        } else {
+            let loadView = new LoadView();
+            loadView.children.append(renderView);
+            tasks.push(loadView);
+        }
+
         return tasks;
         
 
@@ -70,10 +82,5 @@ export class ViewVisitor extends ElementVisitor {
         actions.append(new CreateBindingContextAction(_bindingContextManager.get(this), element));
         let viewDefinitionManager = _viewDefinitionManager.get(this);*/
 
-        //if (viewDefinitionManager.exists(viewPath)) {
-            // RenderViewAction
-        //} else {
-            // Load relative to Region and then RenderViewAction
-        //}
     }
 }

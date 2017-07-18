@@ -7,6 +7,7 @@ import { Task } from "doLittle/tasks/Task";
 export class LoadView extends Task {
 
     constructor() {
+        super();
         
     }
 
