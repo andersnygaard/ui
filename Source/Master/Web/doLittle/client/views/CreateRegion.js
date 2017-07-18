@@ -26,6 +26,7 @@ export class CreateRegion extends Task {
 
     /** @inheritdoc */
     execute(taskContext) {
-
+        let region = _regionManager.get(this).createFor(_element.get(this));
+        taskContext.values.region = region;
     }
 }
