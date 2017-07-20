@@ -7,6 +7,7 @@ import {Task} from "doLittle/tasks/Task";
 export class ViewDefinitionLoadTask extends Task
 {
     constructor(viewPath, viewModelPath) {
+        super();
 
     }
 }
