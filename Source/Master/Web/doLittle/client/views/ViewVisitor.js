@@ -13,7 +13,7 @@ import { ViewPath } from "./ViewPath";
 import { ViewLoader } from "./ViewLoader";
 import { MissingViewPath } from "./MissingViewPath";
 import { RenderView } from "./RenderView";
-import { LoadView } from "./LoadView";
+import { LoadAndRenderView } from "./LoadAndRenderView";
 
 const _bindingContextManager = new WeakMap();
 const _regionManager = new WeakMap();
@@ -62,12 +62,12 @@ export class ViewVisitor extends ElementVisitor {
         tasks.push(new CreateBindingContext(_bindingContextManager.get(this), element))
 
         let viewDefinitionManager = _viewDefinitionManager.get(this);
-        let renderView = new RenderView();
+        
         if (viewDefinitionManager.exists(viewPath)) {
+            let renderView = new RenderView();    
             tasks.push(renderView);
         } else {
-            let loadView = new LoadView(_viewLoader.get(this), viewPath);
-            loadView.children.append(renderView);
+            let loadView = new LoadAndRenderView(_viewLoader.get(this), viewPath);
             tasks.push(loadView);
         }
 

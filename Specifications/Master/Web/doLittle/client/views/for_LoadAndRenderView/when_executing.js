@@ -1,4 +1,4 @@
-import { LoadView } from "doLittle/client/views/LoadView";
+import { LoadAndRenderView } from "doLittle/client/views/LoadAndRenderView";
 
 describe("when executing", () => {
     let viewPath = { my: "viewPath" };
@@ -15,12 +15,12 @@ describe("when executing", () => {
     let taskContext = {
         values: {}
     };
-    let loadView = null;
+    let loadAndRenderView = null;
 
     beforeEach(() => {
-        loadView = new LoadView(viewLoader, viewPath);
+        loadAndRenderView = new LoadAndRenderView(viewLoader, viewPath);
 
-        (becauseOf => loadView.execute(taskContext))();
+        (becauseOf => loadAndRenderView.execute(taskContext))();
     });
 
     it("should delegate loading to the view loader", () => viewLoader.load.calledWith(viewPath).should.be.true);

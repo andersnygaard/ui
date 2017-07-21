@@ -12,10 +12,10 @@ const _viewPath = new WeakMap();
 /**
  * Represents a {Task} that is capable of loading views
  */
-export class LoadView extends Task {
+export class LoadAndRenderView extends Task {
 
     /**
-     * Initializes a new instance of {LoadView}
+     * Initializes a new instance of {LoadAndRenderView}
      * @param {ViewLoader} viewLoader The loader for loading views
      * @param {ViewPath} viewPath The path of the view to load
      */
