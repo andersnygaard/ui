@@ -16,4 +16,6 @@ exports.use(chai.expect);
 exports.use(chai.should);
 exports.use(chai.assert);
 
+constructors = require("constructors");
+
 require("../../temp.js");

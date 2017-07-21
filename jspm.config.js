@@ -2,7 +2,7 @@ SystemJS.config({
     paths: {
         "npm:": "jspm_packages/npm/",
         "doLittle": "Source/Master/Web/doLittle",
-        "constructorStubs": "./constructorStubs",
+        "constructors": "./constructors",
         "Specifications": "Specifications/Master/**/*.js",
         "app/": "src/",
         "babel-plugin-dolittle-constructors": "./babel-plugin-dolittle-constructors.js"

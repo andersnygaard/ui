@@ -1,33 +1,33 @@
+const constructors = "constructors";
+
 module.exports = function ({ types: t }) {
     return {
         visitor: {
             Program(path) {
                 
-                const identifier = t.identifier("constructorStubs");
+                const identifier = t.identifier(constructors);
                 const importDefaultSpecifier = t.importDefaultSpecifier(identifier);
-                const importDeclaration = t.importDeclaration([importDefaultSpecifier], t.stringLiteral("constructorStubs"));
+                const importDeclaration = t.importDeclaration([importDefaultSpecifier], t.stringLiteral(constructors));
                 path.unshiftContainer("body", importDeclaration);
             },
             Class(path) {
                 const { node } = path;
 
                 let className = path.node.id.name;
-                if( className.indexOf("ConstructorStubs") >= 0 ) return;
+                if( className.indexOf("Constructor") >= 0 ) return;
 
                 var methods = path.node.body.body;
                 path.node.body.body.forEach((content) => {
                     if (content.key.name == "constructor") {
-                        if (content._constructorStubSet) return;
+                        if (content._constructorsSet) return;
 
-                        content._constructorStubSet = true;
-                        var constructorStubName = className;
-                        var constructorStubs = "constructorStubs";
+                        content._constructorsSet = true;
 
                         content.body.body.push(
                             t.expressionStatement(
                                 t.CallExpression(
                                     t.MemberExpression(
-                                        t.identifier(constructorStubs),
+                                        t.identifier(constructors),
                                         t.identifier("handle")
                                     ),
                                     [
