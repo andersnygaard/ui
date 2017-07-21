@@ -10,6 +10,7 @@ import { CreateBindingContext } from "doLittle/client/values/CreateBindingContex
 import { ViewDefinitionManager } from "./ViewDefinitionManager";
 import { ViewDefinition } from "./ViewDefinition";
 import { ViewPath } from "./ViewPath";
+import { ViewLoader } from "./ViewLoader";
 import { MissingViewPath } from "./MissingViewPath";
 import { RenderView } from "./RenderView";
 import { LoadView } from "./LoadView";
@@ -17,6 +18,9 @@ import { LoadView } from "./LoadView";
 const _bindingContextManager = new WeakMap();
 const _regionManager = new WeakMap();
 const _viewDefinitionManager = new WeakMap();
+const _viewLoader = new WeakMap();
+
+console.log("")
 
 /**
  * Represents a {ElementVisitor} for dealing with views
@@ -28,11 +32,15 @@ export class ViewVisitor extends ElementVisitor {
      * @param {RegionManager} regionManager The manager for dealing with regions
      * @param {ViewDefinitionManager} viewDefinitionManager The manager for dealing with {ViewDefinition}s
      */
-    constructor(bindingContextManager, regionManager, viewDefinitionManager) {
+    constructor(bindingContextManager, 
+                regionManager, 
+                viewDefinitionManager,
+                viewLoader) {
         super();
         _bindingContextManager.set(this, bindingContextManager);
         _regionManager.set(this, regionManager);
         _viewDefinitionManager.set(this, viewDefinitionManager);
+        _viewLoader.set(this, viewLoader);
     }
 
     /** @inheritdoc */

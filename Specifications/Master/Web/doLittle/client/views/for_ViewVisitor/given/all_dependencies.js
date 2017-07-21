@@ -12,12 +12,10 @@ export default class {
         };
 
         this.bindingContextManager = {
-            hasParent: sinon.stub(),
-            getParent: sinon.stub(),
-            createFor: sinon.stub()
         };
 
         this.viewDefinitionManager = {
+            getFor: sinon.stub(),
             exists: sinon.stub()
         }
     }

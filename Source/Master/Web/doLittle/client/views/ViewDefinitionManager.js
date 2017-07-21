@@ -29,7 +29,7 @@ export class ViewDefinitionManager
      * Get a view based on the {ViewPath}
      * @param {ViewPath} viewPath The path of the view to get
      */
-    getFrom(viewPath) {
+    getFor(viewPath) {
     }
 
     /**
