@@ -54,7 +54,6 @@ export class ViewVisitor extends ElementVisitor {
         }
 
         // TODO: Deal with URI locations / mappers - UriLocationMapper thingy
-
         let viewPath = new ViewPath(pathAttribute.value);
 
         let tasks = [];
@@ -67,7 +66,7 @@ export class ViewVisitor extends ElementVisitor {
         if (viewDefinitionManager.exists(viewPath)) {
             tasks.push(renderView);
         } else {
-            let loadView = new LoadView();
+            let loadView = new LoadView(_viewLoader.get(this), viewPath);
             loadView.children.append(renderView);
             tasks.push(loadView);
         }

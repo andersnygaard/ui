@@ -7,10 +7,14 @@ import { LoadView } from "doLittle/client/views/LoadView";
 
 describe("when visiting with view element and existing view", () => {
     let context = null;
+    const pathToView = {
+        value: "something"
+    };
+    
     const element = {
         localName: "view",
         attributes: {
-            getNamedItem: sinon.stub().returns("something")
+            getNamedItem: sinon.stub().returns(pathToView)
         }
     };
     let tasks = null;

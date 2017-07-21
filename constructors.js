@@ -1,6 +1,9 @@
 class Constructors {
     handle(source, name, args) {
-        this[name] = sinon.stub();
+        if( !this.hasOwnProperty(name) ) {
+            this[name] = sinon.stub();
+        }
+        
         this[name].apply(source, args);
     }
 }

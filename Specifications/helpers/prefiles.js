@@ -18,4 +18,10 @@ exports.use(chai.assert);
 
 constructors = require("constructors");
 
+beforeEach(() => {
+    for( var property in constructors.default ) {
+        delete constructors.default[property];
+    }
+});
+
 require("../../temp.js");

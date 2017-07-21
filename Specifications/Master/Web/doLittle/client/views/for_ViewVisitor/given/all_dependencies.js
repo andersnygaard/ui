@@ -8,7 +8,7 @@ export default class {
         };
 
         this.regionManager = {
-
+            my:"regionManager"
         };
 
         this.bindingContextManager = {
@@ -17,6 +17,10 @@ export default class {
         this.viewDefinitionManager = {
             getFor: sinon.stub(),
             exists: sinon.stub()
-        }
+        };
+
+        this.viewLoader = {
+            my:"viewLoader"
+        };
     }
 }
