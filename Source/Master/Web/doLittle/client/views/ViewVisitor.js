@@ -1,5 +1,5 @@
 /*---------------------------------------------------------------------------------------------
- *  Copyright (c) 2008-2017 doLittle. All rights reserved.
+     *  Copyright (c) 2008-2017 doLittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { ElementVisitor } from "doLittle/client/markup/ElementVisitor";
@@ -20,7 +20,6 @@ const _regionManager = new WeakMap();
 const _viewDefinitionManager = new WeakMap();
 const _viewLoader = new WeakMap();
 
-console.log("")
 
 /**
  * Represents a {ElementVisitor} for dealing with views

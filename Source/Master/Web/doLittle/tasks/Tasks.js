@@ -31,6 +31,7 @@ export class Tasks
      * @param {*} task 
      */
     append(task) {
+        debugger;
         _tasks.get(this).push(task);
     }
 }

@@ -10,7 +10,7 @@
 
 <body class="fixed-left">
 
-    <view>
+    <view path="something">
         Hello
     </view>
     
@@ -28,15 +28,15 @@
         var systemLocate = System.locate;
 
         Promise.all([
-            System.import("doLittle/markup/Document"),
-            System.import("doLittle/markup/ElementVisitors"),
-            System.import("doLittle/markup/ActionsFactory"),
-            System.import("doLittle/markup/instancesOfElementVisitor")
+            System.import("doLittle/client/markup/Document"),
+            System.import("doLittle/client/markup/ElementVisitors"),
+            System.import("doLittle/tasks/TaskExecutor"),
+            System.import("doLittle/client/markup/instancesOfElementVisitor")
         ]).then(function(imports) {
-            System.import("doLittle/markup/ObjectModel").then(function (o) {
+            System.import("doLittle/client/markup/ObjectModel").then(function (o) {
                 var document = new imports[0].Document();
                 var elementVisitors = new imports[1].ElementVisitors(imports[3].default);
-                var actionsFactory = new imports[2].ActionsFactory();
+                var actionsFactory = new imports[2].TaskExecutor();
                 var om = new o.ObjectModel(document, elementVisitors, actionsFactory);
                 om.initialize();
             });
