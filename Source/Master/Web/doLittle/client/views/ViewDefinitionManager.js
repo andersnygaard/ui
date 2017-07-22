@@ -3,6 +3,7 @@
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import {View} from "./View";
+import {AssetsManager} from "doLittle/client/assets/AssetsManager";
 
 const _definitions = new WeakMap();
 
@@ -13,8 +14,9 @@ export class ViewDefinitionManager
 {
     /**
      * Initializes a new instance of {ViewManager}
+     * @param {AssetsManager} assetsManager The manager of assets
      */
-    constructor() {
+    constructor(assetsManager) {
         _definitions.set(this, {});
     }
 
@@ -30,12 +32,11 @@ export class ViewDefinitionManager
      * @param {ViewPath} viewPath The path of the view to get
      */
     getFor(viewPath) {
-    }
-
-    /**
-     * Get a view instance
-     * @param {ViewPath} viewPath The path of the view to create
-     */
-    createFrom(viewPath) {
+        // Based on context (language, tenant, etc.. ) - resolve the desired view
+        // If not desired view exists in assets, fallback
+        
+        // Similar for viewModel - resolve based on context. If there is a viewModel at all.
+        
+        // Associate these into ViewDefinition - if no ViewModel - use NullViewModel
     }
 }
