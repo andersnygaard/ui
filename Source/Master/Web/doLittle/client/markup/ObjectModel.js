@@ -15,7 +15,9 @@ const _taskExecutor = new WeakMap();
 
 let _handle = (elementVisitors, element, tasks) => {
     let returnedTasks = elementVisitors.visit(element);
-    if( returnedTasks ) returnedTasks.forEach(task => tasks.append(task));
+    if( returnedTasks ) returnedTasks.forEach(task => {
+        if( task ) tasks.append(task);
+    });
 
     for (let elementIndex = 0; elementIndex < element.children.length; elementIndex++) {
         let child = element.children[elementIndex];
