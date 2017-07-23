@@ -8,7 +8,7 @@ export default class extends Context
         this.visitor = new ViewVisitor(
             this.bindingContextManager, 
             this.regionManager, 
-            this.viewDefinitionManager,
+            this.viewDefinitions,
             this.viewLoader);
     }
 }

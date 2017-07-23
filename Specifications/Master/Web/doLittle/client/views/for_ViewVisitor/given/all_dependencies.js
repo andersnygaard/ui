@@ -14,7 +14,7 @@ export default class {
         this.bindingContextManager = {
         };
 
-        this.viewDefinitionManager = {
+        this.viewDefinitions = {
             getFor: sinon.stub(),
             exists: sinon.stub()
         };

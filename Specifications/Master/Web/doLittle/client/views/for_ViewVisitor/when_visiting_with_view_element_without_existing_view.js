@@ -20,7 +20,7 @@ describe("when visiting with view element without existing view", () => {
 
     beforeEach(() => {
         context = new Context();
-        context.viewDefinitionManager.exists.returns(false);
+        context.viewDefinitions.exists.returns(false);
         constructors.ViewPath = sinon.stub().callsFake(() => viewPath = this);
         (becauseOf => tasks = context.visitor.visit(element, context.tasks, context.results))();
     });

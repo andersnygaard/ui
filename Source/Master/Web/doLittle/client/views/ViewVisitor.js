@@ -7,7 +7,7 @@ import { BindingContextManager } from "doLittle/client/values/BindingContextMana
 import { RegionManager } from "./RegionManager";
 import { CreateRegion } from "./CreateRegion";
 import { CreateBindingContext } from "doLittle/client/values/CreateBindingContext";
-import { ViewDefinitionManager } from "./ViewDefinitionManager";
+import { ViewDefinitions } from "./ViewDefinitions";
 import { ViewDefinition } from "./ViewDefinition";
 import { ViewPath } from "./ViewPath";
 import { ViewLoader } from "./ViewLoader";
@@ -17,7 +17,7 @@ import { LoadAndRenderView } from "./LoadAndRenderView";
 
 const _bindingContextManager = new WeakMap();
 const _regionManager = new WeakMap();
-const _viewDefinitionManager = new WeakMap();
+const _viewDefinitions = new WeakMap();
 const _viewLoader = new WeakMap();
 
 
@@ -29,16 +29,17 @@ export class ViewVisitor extends ElementVisitor {
      * Initializes a new instance of {ViewVisitor}
      * @param {BindingContextManager} bindingContextManager The manager for dealing with binding contexts
      * @param {RegionManager} regionManager The manager for dealing with regions
-     * @param {ViewDefinitionManager} viewDefinitionManager The manager for dealing with {ViewDefinition}s
+     * @param {ViewDefinitions} viewDefinitionManager The manager for dealing with {ViewDefinition}s
+     * @param {ViewLoader} viewLoader The system that is capable of loading views
      */
     constructor(bindingContextManager, 
                 regionManager, 
-                viewDefinitionManager,
+                viewDefinitions,
                 viewLoader) {
         super();
         _bindingContextManager.set(this, bindingContextManager);
         _regionManager.set(this, regionManager);
-        _viewDefinitionManager.set(this, viewDefinitionManager);
+        _viewDefinitions.set(this, viewDefinitions);
         _viewLoader.set(this, viewLoader);
     }
 
@@ -60,12 +61,14 @@ export class ViewVisitor extends ElementVisitor {
         tasks.push(new CreateRegion(_regionManager.get(this), element))
         tasks.push(new CreateBindingContext(_bindingContextManager.get(this), element))
 
-        let viewDefinitionManager = _viewDefinitionManager.get(this);
+        let viewDefinitions = _viewDefinitions.get(this);
         
-        if (viewDefinitionManager.exists(viewPath)) {
-            let renderView = new RenderView();    
+        if (viewDefinitions.exists(viewPath)) {
+            let viewDefinition = viewDefinitions.getFor(viewPath);
+            let renderView = new RenderView(viewDefinition);    
             tasks.push(renderView);
         } else {
+            
             let loadView = new LoadAndRenderView(_viewLoader.get(this), viewPath);
             tasks.push(loadView);
         }
